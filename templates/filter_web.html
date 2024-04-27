@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} test {% endblock %}
+{% block content %}
+<div id="func_list" data-json="{{ func_list|safe }}"></div>
+<div id="gene_list" data-json="{{ gene_list|safe }}"></div>
+<div class="card">
+
+    <div class="card mt-3">
+    
+        <div class="card-header fs-5 fw-bold" >
+            search
+        
+        </div>
+    
+        <div class='card-body'>
+            <label for="gene" class="form-label">Gene.refGene:</label>
+            <input type="text" class="form-control" name="genes" id="genes" >
+
+            Func.refGene:
+            <input type="checkbox" id="coding" name="interest" value="ncRNA_exonic"  />
+            <label for="coding">ncRNA_exonic</label>
+            <input type="checkbox" id="coding" name="interest" value="ncRNA_intronic"/>
+            <label for="coding">ncRNA_intronic</label>
+            <input type="checkbox" id="coding" name="interest" value="intergenic" />
+            <label for="coding">intergenic</label>
+            <input type="checkbox" id="coding" name="interest" value="downstream" />
+            <label for="coding">downstream</label>
+            <input type="checkbox" id="coding" name="interest" value="intronic" />
+            <label for="coding">intronic</label>
+            <input type="checkbox" id="coding" name="interest" value="upstream" />
+            <label for="coding">upstream</label>
+            <input type="checkbox" id="coding" name="interest" value="UTR3" />
+            <label for="coding">UTR3</label>
+            <input type="checkbox" id="coding" name="interest" value="UTR5" />
+            <label for="coding">UTR5</label>
+            <input type="checkbox" id="coding" name="interest" value="splicing" />
+            <label for="coding">splicing</label>
+
+
+       
+            <div class="col-sm-4">
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #6B8E23;color:#FFFFFF;border-color: #6B8E23;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;font-size: 14px;">
+                                ExAC_ALL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="border-right:0;width:40%">
+                                        ExAC_ALL
+                                    </span>
+                                    <span class="input-group-addon" style="border-right:0;width:12%">
+                                        <select id="ExAC_ALL_select" style="height: 20px;width:100%" name="ExAC_ALL_select">
+                                            <option>></option>
+                                            <option><</option>
+                                            <!--<option>Either (Condition2 vs Condition1)</option>-->
+                                        </select>
+                                    </span>
+                                    <input type="text" class="form-control" id="ExAC_ALL_value" name="ExAC_ALL_value"  style="z-index:0;border-top-right-radius:0;">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #6B8E23;color:#FFFFFF;border-color: #6B8E23;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;font-size: 14px;">
+                                CADD_phred
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="border-right:0;width:40%">
+                                        CADD_phred
+                                    </span>
+                                    <span class="input-group-addon" style="border-right:0;width:12%">
+                                        <select id="CADD_phred_select" style="height: 20px;width:100%" name="CADD_phred_select">
+                                            <option>></option>
+                                            <option><</option>
+                                            <!--<option>Either (Condition2 vs Condition1)</option>-->
+                                        </select>
+                                    </span>
+                                    <input type="text" class="form-control" id="CADD_phred_value" name="CADD_phred_value"  style="z-index:0;border-top-right-radius:0;">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #6B8E23;color:#FFFFFF;border-color: #6B8E23;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;font-size: 14px;">
+                                DANN_score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="border-right:0;width:40%">
+                                        DANN_score
+                                    </span>
+                                    <span class="input-group-addon" style="border-right:0;width:12%">
+                                        <select id="DANN_score_select" style="height: 20px;width:100%" name="DANN_score_select">
+                                            <option>></option>
+                                            <option><</option>
+                                            <!--<option>Either (Condition2 vs Condition1)</option>-->
+                                        </select>
+                                    </span>
+                                    <input type="text" class="form-control" id="DANN_score_value" name="DANN_score_value" style="z-index:0;border-top-right-radius:0;">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #6B8E23;color:#FFFFFF;border-color: #6B8E23;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;font-size: 14px;">
+                                SIFT_score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="border-right:0;width:40%">
+                                        SIFT_score
+                                    </span>
+                                    <span class="input-group-addon" style="border-right:0;width:12%">
+                                        <select id="SIFT_score_select" style="height: 20px;width:100%" name="SIFT_score_select">
+                                            <option>></option>
+                                            <option><</option>
+                                            <!--<option>Either (Condition2 vs Condition1)</option>-->
+                                        </select>
+                                    </span>
+                                    <input type="text" class="form-control" id="SIFT_score_value" name="SIFT_score_value" style="z-index:0;border-top-right-radius:0;">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #6B8E23;color:#FFFFFF;border-color: #6B8E23;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;font-size: 14px;">
+                                MutationTaster_score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="border-right:0;width:40%">
+                                        MutationTaster_score
+                                    </span>
+                                    <span class="input-group-addon" style="border-right:0;width:12%">
+                                        <select id="MutationTaster_score_select" style="height: 20px;width:100%" name="MutationTaster_score_select">
+                                            <option>></option>
+                                            <option><</option>
+                                            <!--<option>Either (Condition2 vs Condition1)</option>-->
+                                        </select>
+                                    </span>
+                                    <input type="text" class="form-control" id="MutationTaster_score_value" name="MutationTaster_score_value"  style="z-index:0;border-top-right-radius:0;">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>      
+   
+        <hr>
+        <div class="card-footer text-muted">
+            <button  class="btn btn-secondary run" id="submit">送出</button>
+            <div class="circle"  id='circle' style="display:none;">
+                <span class="spinner-border"></span>
+                <span class="'load"></span>
+                <span class="text"></span>
+                <span>wait for search</span>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" style=" display: none;" id="result">
+                
+        <div class="card-header fs-5 fw-bold" >
+            result
+        </div>
+        <div class='card-body'>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Gene</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Func & Gene</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">All</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <table id="one_siganl_table"></table> 
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <table id="two_siganl_table"></table>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <table id="all_siganl_table"></table>
+                </div>
+              </div>
+             
+        </div>
+            
+    
+    </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-xl modal-fullscreen-xxl-down modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Result</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div align="center" class="container-fluid" style="margin-top:2%;">
+                    <div class="col-12 mx-auto">
+                        <div class="card report_element" id="report-card-supportresistant" style="margin:0px auto; margin-top:2%;">
+                            <div id="container">
+                                <table id="result_table" class="table table-bordered"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+    
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/filter_web.js' %}"></script>
+{% endblock %}

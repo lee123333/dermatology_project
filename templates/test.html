@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} test {% endblock %}
+{% block content %}
+<div id="func_list" data-json="{{ func_list|safe }}"></div>
+<div id="gene_list" data-json="{{ gene_list|safe }}"></div>
+<div class="card">
+
+    <div class="card mt-3">
+    
+        <div class="card-header fs-5 fw-bold" >
+            search
+        
+        </div>
+    
+        <div class='card-body'>
+            <label for="func" class="form-label">Func.refGene:</label>
+            <input type="text" class="form-control" name="func" id="func" >
+            <label for="gene" class="form-label">Gene.refGene:</label>
+            <input type="text" class="form-control" name="genes" id="genes" >
+        <!-- <div class="col-sm-4">
+            <select id="survival_select_Adrenal_Gland_Adrenocortical_Carcinoma" style="height: 22px;width: 100%;" name="samples_select">
+                <option value="strategy1">策略一</option>
+                <option value="strategy2">策略二</option>
+            </select>
+        </div> -->
+        </div>      
+   
+        <hr>
+        <div class="card-footer text-muted">
+            <button  class="btn btn-secondary run" id="submit">送出</button>
+            <div class="circle"  id='circle' style="display:none;">
+                <span class="spinner-border"></span>
+                <span class="'load"></span>
+                <span class="text"></span>
+                <span>wait for search</span>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3" style=" display: none;" id="result">
+                
+        <div class="card-header fs-5 fw-bold" >
+            result
+        </div>
+        <div class='card-body'>
+            <table id="123"></table>  
+        </div>
+            
+    
+    </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-xl modal-fullscreen-xxl-down modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Result</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div align="center" class="container-fluid" style="margin-top:2%;">
+                    <div class="col-12 mx-auto">
+                        <div class="card report_element" id="report-card-supportresistant" style="margin:0px auto; margin-top:2%;">
+                            <div id="container">
+                                <table id="result_table" class="table table-bordered"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+    
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/test.js' %}"></script>
+{% endblock %}
